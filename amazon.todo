@@ -1,2 +1,6 @@
 amazon.todo
 
+Add a factory for testing.. OR set params of a new item.
+
+Write a test. Item is valid before determining certain items are not valid
+

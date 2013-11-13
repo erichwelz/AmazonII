@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+  before_filter :load_product
   before_filter :ensure_logged_in, :only => [:edit, :create, :show, :update, :destroy]
 
   def new
@@ -11,14 +12,12 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    #@review = @product.reviews.build(review_params)
+
     @review = Review.new( 
       :content => params[:review][:content],
       :product_id => @product.id,
       :user_id => current_user.id
       )
-
-    #@review.user_id = current_user.id
 
     if @review.save
       redirect_to product_path(@product), notice: 'Review created successfully'
