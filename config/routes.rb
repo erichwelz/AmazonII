@@ -1,6 +1,12 @@
 GiantRiver::Application.routes.draw do
+  get "reviews/index"
+  get "reviews/new"
+  get "reviews/edit"
+  get "reviews/show"
   get "sessions/new"
-  resources :products
+  resources :products do
+  resources :reviews 
+  end
   resources :users
   resources :sessions, only: [:new, :create, :destroy] 
 

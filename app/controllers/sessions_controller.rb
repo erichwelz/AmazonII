@@ -18,6 +18,6 @@ class SessionsController < ApplicationController
     redirect_to products_url, :notice => "Logged out!"
   end
 
-
+  
 
 end
