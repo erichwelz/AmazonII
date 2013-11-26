@@ -7,27 +7,20 @@
 
 <p><%=@product[:description] %></p>
 
-<h3<Reviews</h3>
+<h3>Reviews</h3>
 
 <p>Review for <%= @product.name %></p>
-
-<% @product.reviews.each do |review| %>
-<p>
-  <%= review.content %>
-  <br>
-  <% if review.user != nil %>
-  <em> by <%= review.user.name %></em>
-  Added on: <%= review.created_at %>
-<% else %>
-  <p>Please <%= link_to "log in", new_session_path %> to add a review.</p> 
-<% end %>
-
-<% end %>
+  <div id="review-list"> 
+      <%= render :partial => "products/reviews" %>
+</div>
 
   <h4>New Review</h4>
 
-  <%= form_for([@product, @review]) do |f| %>
-     <%= render "error" %>
+  <%= form_for([@product, @review], :remote => true) do |f| %>
+
+  <div id="review-form-errors">
+    <%= render :partial => "/products/review_form_errors" %>
+  </div>
 
     <div class="field">
       <%= f.label "Comment:" %><br />
@@ -39,3 +32,14 @@
   <% end %>
 
 
+// <script type="text/javascript">
+
+//   $(document).ready(function() {
+//      $("#new_review")
+//         .on('ajax:beforeSend', function() {alert("loading!");})
+//         .on('ajax:success', function(data, status, xhr) {alert("success!");})
+//         .on('ajax:error', function(xhr, status, error) {alert("error!");})
+//         .on('ajax:complete', function() {alert("complete!");});
+//   });
+
+// </script>
