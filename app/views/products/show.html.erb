@@ -27,12 +27,12 @@
       <%= f.text_area :content %>
     </div>
     <div class="actions">
-      <%= f.submit %>
+      <%= f.submit "Submit", :id => "new_review" %>
     </div>
   <% end %>
 
 
-// <script type="text/javascript">
+<script type="text/javascript">
 
 //   $(document).ready(function() {
 //      $("#new_review")
@@ -43,3 +43,19 @@
 //   });
 
 // </script>
+
+<script type="text/javascript">
+  $(function() {
+     $("#new_review")
+        .on('ajax:beforeSend', function(){
+          $("input[type='submit']")
+            .val('Saving...')
+            .attr('disabled', 'disabled'); 
+        })
+        .on('ajax:complete', function () {
+          $("input[type='submit']")
+          .val('Submit')
+          .removeAttr('disabled');
+      });
+  });
+</script>
