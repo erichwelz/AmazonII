@@ -1,0 +1,6 @@
+<ul>
+  <%# @products.each do |product| %>
+
+  <li><%= link_to product[:name], "/products/#{product[:id]}" %>  $<%= product.formatted_price %></li>
+  <%# end %>
+</ul>

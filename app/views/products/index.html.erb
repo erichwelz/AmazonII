@@ -1,15 +1,12 @@
-<h1>Amazon II</h1>
+<%= link_to "Add a product", new_product_path %>
 
 
-<%= link_to "Add a product", "/products/new" %>
+<h1>Products: <small><%= page_entries_info @products %></small></h1>
 
-<% @products.each do |product| %>
-<ul>
-  <li><%= link_to product[:name], "/products/#{product[:id]}" %>, $<%= product.formatted_price %></li>
-</ul>
+<hr/>
 
-<% end %>
+<div id="products">
+  <%= render @products %>
+</div>
 
-
-
-<p>Find me in app/views/products/index.html.erb</p>
+<%= paginate @products %>
