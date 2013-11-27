@@ -16,42 +16,6 @@
 //= require turbolinks
 //= require_tree .
 
-// jQuery(function() {
-//   $(window).scroll(function() {
-// if ($(window).scrollTop() > $(document).height() - $(window).height() - 50) {
-//     return alert('near bottom');
-//     }
-//   });
-// });
-
- //   jQuery(function() {
- //   $(window).scroll(function() {
- //     if ($(window).scrollTop() > $(document).height() - $(window).height() - 50) {
- //       console.log($('.pagination span.next').children().attr('href'));
- //       $.getScript($('.pagination span.next').children().attr('href'));
- //     }
- //   });
- // });
-
-
-// jQuery(function() {
-//   if ($('.pagination').length) {
-//    $(window).scroll(function() {
-//       var url = $('.pagination span.next').children().attr('href');
-//      if (url && ($(window).scrollTop() > $(document).height() - $(window).height() - 50) {
-//        $('.pagination').text("Fetching more products...");
-//        return $.getScript(url);
-//        }
-//      });
-//    }
-//  });
-
-  $('term').autocomplete({
-    minLength: 2,
-    source: 'products.json'
-    });
-
-
 jQuery(function() {
   if ($('.pagination').length) {
     $(window).scroll(function() {
@@ -62,4 +26,19 @@ jQuery(function() {
       }
     });
   }
+
+  $('#term').autocomplete({
+    minLength: 2,
+    source: 'products.json',
+    response: function(event, ui) {
+      for(var i=0; i < ui.content.length; i++) {
+        var item = ui.content[i];
+        item.label = item.value = item.name;
+      }
+    },
+    select: function(event, ui) {
+      event.preventDefault();
+      window.location.href = 'products/' + ui.item.id;
+    }
+  });
 });
