@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.ui.autocomplete
 //= require turbolinks
 //= require_tree .
 
@@ -44,6 +45,12 @@
 //      });
 //    }
 //  });
+
+  $('term').autocomplete({
+    minLength: 2,
+    source: 'products.json'
+    });
+
 
 jQuery(function() {
   if ($('.pagination').length) {
