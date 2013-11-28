@@ -20,5 +20,7 @@ test:
 
 production:
   adapter: postgresql
+  encoding: unicode
   database: rainforest
+  pool: 5
   host: localhost
