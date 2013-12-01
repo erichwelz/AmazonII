@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require foundation
 //= require jquery.ui.autocomplete
 //= require turbolinks
 //= require_tree .
@@ -42,3 +43,4 @@ jQuery(function() {
     }
   });
 });
+$(function(){ $(document).foundation(); });

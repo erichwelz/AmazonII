@@ -11,7 +11,7 @@ Product.destroy_all
 
 User.create!({
   email: "test@test.ca",
-  name: "Test",
+  name: "test",
   password: "test",
   password_confirmation: "test"
   }
@@ -20,9 +20,8 @@ User.create!({
 100.times do |i|
 
 Product.create({
-  name: "Product#{i}",
-  description: "Description#{i}",
-  price_in_cents: i
-  }
-)
+  name: Faker::Commerce.product_name,
+  description: Faker::Lorem.sentence(word_count = 8),
+  price_in_cents: (rand * 10000).to_i
+})
 end

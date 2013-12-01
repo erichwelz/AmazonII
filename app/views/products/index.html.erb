@@ -1,14 +1,15 @@
 <%= link_to "Add a product", new_product_path %>
 
-
 <h1>Products</h1>
 
 <hr />
 
+<div id="product_search">
 <%= label_tag :term, "Find a product:" %>
 <%= text_field_tag :term %>
+</div>
 
-<hr />
+<hr /> 
 
 <div id="products">
   <%= render @products %>

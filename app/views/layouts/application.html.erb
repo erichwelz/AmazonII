@@ -1,12 +1,17 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Amazon II</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title><%= content_for?(:title) ? yield(:title) : "The Amazon" %></title>
+
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
 
     <% if flash[:notice] %>
     <p id="notice"><%= flash[:notice] %></p>
@@ -15,7 +20,8 @@
       <p id="alert"><%= flash[:alert] %></p>
     <% end %>
 
-<%= yield %>
+    <%= yield %>
+    <%= javascript_include_tag "application" %>
 
        <p class="userinfo">
       <% if current_user %>
@@ -24,5 +30,6 @@
         <%= link_to "Log in", new_session_path %> or <%= link_to "Sign up", new_user_path %>
       <% end %>
     </p>
-</body>
+
+  </body>
 </html>
